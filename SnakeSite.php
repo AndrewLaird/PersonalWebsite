@@ -6,22 +6,16 @@
   </div>
   <div id = "Page">
     <h1 id = "Title"> Andrew Laird</h1>
-    <a src = "">(GitHub)</a>
+    <a src = "https://github.com/AndrewLaird">(GitHub)</a>
     <a src = "">(Linked In)</a>
     <a src = "">(Projects)</a>
-    <a href = "codepen.io/LairdAndrew">(CodePen)<a>
+    <a href = "http:://www.codepen.io/LairdAndrew">(CodePen)<a>
     
     
   </div>
-  <!--
-  <h1>Snake Art</h1>
-  <div id = "scoreBoard">test</div>
-  <div class= "border">
-  </div>
-  <div id = "carl"></div>
-  -->
 </body>
 <style>
+
 #canvas{
   position: absolute;
 }
@@ -42,19 +36,9 @@ a{
 
 </style>
 
-<script type="text/javascript">
+<script>
+
 window.onload = SnakeArt("canvas");
-
-var count1 = 0;
-var count2 = 0;
-var count3 = 0;
-var count4 = 0;
-
-var count5 = 0;
-var count6 = 0;
-var count7 = 0;
-var count8 = 0;
-
 
 function SnakeArt(id) {
   var canvas = document.getElementById(id);
@@ -129,40 +113,10 @@ function SnakeArt(id) {
       var x = snakes[i][0];
       var y = snakes[i][1];
       var pos = board[y][x];
+      colorDict = {0:color1,1:color2,2:color3,3:color4,4:color1,5:color2,6:color3,7:color4};
+      
       if (pos == 0) {
-        if (i == 0) {
-          c.fillStyle = color1;
-          count1++;
-        }
-        if (i == 1) {
-          c.fillStyle = color2;
-          count2++;
-        }
-        if (i == 2) {
-          c.fillStyle = color3;
-          count3++;
-        }
-        if (i == 3) {
-          c.fillStyle = color4;
-          count4++;
-        }
-        if (i == 4) {
-          c.fillStyle = color4;
-          count4++;
-        }
-        if (i == 5) {
-          c.fillStyle = color4;
-          count4++;
-        }
-        if (i == 6) {
-          c.fillStyle = color4;
-          count4++;
-        }
-        if (i == 7) {
-          c.fillStyle = color4;
-          count4++;
-        }
-        
+        c.fillStyle =colorDict[i]
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
         console.log(c);
         board[y][x] = 1;
@@ -180,5 +134,7 @@ function Rand(num) {
 function ScoreBoard(){
   document.getElementById("scoreBoard").innerHTML = ("Snake1: " + count1 + " Snake2: " + count2 + " Snake3: " + count3 + " Snake4: " + count4);
 }
+
+
 
 </script>
