@@ -26,8 +26,9 @@
   position: absolute;
 }
 #Page{
+  color:rgb(50,0,50);
   position:relative;
-  text-shadow: -1px 0 white, 0 1px black, 1px 0 black, 0 -1px white;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   text-align:center;
   padding:5%;
 }
@@ -36,6 +37,8 @@ a{
   text-decoration:none;
   color:inherit;
 }
+
+
 
 </style>
 
