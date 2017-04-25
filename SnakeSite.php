@@ -36,7 +36,7 @@ a{
 
 </style>
 
-<script>
+<script type="text/javascript">
 
 window.onload = SnakeArt("canvas");
 
