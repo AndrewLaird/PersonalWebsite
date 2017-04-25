@@ -43,12 +43,17 @@ a{
 </style>
 
 <script type="text/javascript">
-  window.onload = SnakeArt("canvas");
+window.onload = SnakeArt("canvas");
 
 var count1 = 0;
 var count2 = 0;
 var count3 = 0;
 var count4 = 0;
+
+var count5 = 0;
+var count6 = 0;
+var count7 = 0;
+var count8 = 0;
 
 
 function SnakeArt(id) {
@@ -100,7 +105,11 @@ function SnakeArt(id) {
   var snake2 = [Rand(yNum), Rand(xNum)];
   var snake3 = [Rand(yNum), Rand(xNum)];
   var snake4 = [Rand(yNum), Rand(xNum)];
-  var snakes = [snake1, snake2, snake3, snake4];
+  var snake5 = [Rand(yNum), Rand(xNum)];
+  var snake6 = [Rand(yNum), Rand(xNum)];
+  var snake7 = [Rand(yNum), Rand(xNum)];
+  var snake8 = [Rand(yNum), Rand(xNum)];
+  var snakes = [snake1, snake2, snake3, snake4,snake5,snake6,snake7,snake8];
   setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
@@ -137,6 +146,23 @@ function SnakeArt(id) {
           c.fillStyle = color4;
           count4++;
         }
+        if (i == 4) {
+          c.fillStyle = color4;
+          count4++;
+        }
+        if (i == 5) {
+          c.fillStyle = color4;
+          count4++;
+        }
+        if (i == 6) {
+          c.fillStyle = color4;
+          count4++;
+        }
+        if (i == 7) {
+          c.fillStyle = color4;
+          count4++;
+        }
+        
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
         console.log(c);
         board[y][x] = 1;
@@ -144,7 +170,7 @@ function SnakeArt(id) {
     }
     //does this every 50 miliseconds
     ScoreBoard();
-  }, .1);
+  }, .001);
 }
 
 function Rand(num) {
