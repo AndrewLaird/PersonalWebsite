@@ -9,9 +9,9 @@
   <div id = "Page">
     <h1 id = "Title"> Andrew Laird</h1>
     <a src = "https://github.com/AndrewLaird">(GitHub)</a>
-    <a src = "">(Linked In)</a>
+    <a src = "https://www.linkedin.com/in/andrew-laird-a814b8134">(Linked In)</a>
     <a src = "">(Projects)</a>
-    <a href = "http:://www.codepen.io/LairdAndrew">(CodePen)<a>
+    <a href = "http://www.codepen.io/LairdAndrew">(CodePen)<a>
     
     
   </div>
