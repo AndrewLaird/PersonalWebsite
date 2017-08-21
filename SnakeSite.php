@@ -76,16 +76,6 @@ function SnakeArt(id) {
   }
 
   c.lineWidth = 1;
-  for (y = 0; y < yNum; y++) {
-    for (x = 0; x < xNum; x++) {
-      //difference between stroke and fill style
-
-     // c.strokeStyle = "black";
-      //c.strokeRect(x * xBox, y * yBox, (x + 1) * xBox, (y + 1) * yBox);
-    }
-    //hey good to note that things stay on the canvas and do not need to
-    //be repainted if they are just remaining
-  }
  
   var snake1 = [Rand(yNum), Rand(xNum)];
   var snake2 = [Rand(yNum), Rand(xNum)];
@@ -110,6 +100,8 @@ function SnakeArt(id) {
       }
       var x = snakes[i][0];
       var y = snakes[i][1];
+      print(x)
+      print(y)
 
       if(board[y][x] == 1){
         colorDict = {0:color1,1:color2,2:color3,3:color4};
