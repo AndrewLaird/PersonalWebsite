@@ -108,7 +108,7 @@ function SnakeArt(id) {
       colorDict = {0:color1,1:color2,2:color3,3:color4};
       c.fillStyle =colorDict[i]
       c.fillRect(x * xBox, y * yBox, xBox, yBox );
-      board[y][x] = 1;
+      //board[y][x] = 1;
       //}
     }
     //does this every 50 miliseconds
