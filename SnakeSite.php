@@ -63,8 +63,8 @@ function SnakeArt(id) {
   var color3 = "rgb(50,50,154)";
   var color4 = "rgb(0,0,150)";
 
-  var xNum = width / 10;
-  var yNum = height / 10;
+  var xNum = Math.ceil(width / 10);
+  var yNum = Math.ceil(height / 10);
   var xBox = width / xNum;
   var yBox = height / yNum;
   var board = [];
