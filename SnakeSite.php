@@ -125,18 +125,11 @@ function SnakeArt(id) {
       }
     }
     //does this every 50 miliseconds
-    ScoreBoard();
   }, .001);
 }
 
 function Rand(num) {
   return Math.floor(Math.random() * num);
 }
-
-function ScoreBoard(){
-  document.getElementById("scoreBoard").innerHTML = ("Snake1: " + count1 + " Snake2: " + count2 + " Snake3: " + count3 + " Snake4: " + count4);
-}
-
-
 
 </script>
