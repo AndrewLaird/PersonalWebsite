@@ -100,8 +100,8 @@ function SnakeArt(id) {
       }
       var x = snakes[i][0];
       var y = snakes[i][1];
-      print(x)
-      print(y)
+      console.log(x)
+      console.log(y)
 
       if(board[y][x] == 1){
         colorDict = {0:color1,1:color2,2:color3,3:color4};
