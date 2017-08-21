@@ -80,17 +80,17 @@ function SnakeArt(id) {
 
   c.lineWidth = 1;
  
-  var snake1 = [Rand(yNum), Rand(xNum)];
-  var snake2 = [Rand(yNum), Rand(xNum)];
-  var snake3 = [Rand(yNum), Rand(xNum)];
-  var snake4 = [Rand(yNum), Rand(xNum)];
+  var snake1 = [Rand(xNum), Rand(yNum)];
+  var snake2 = [Rand(xNum), Rand(yNum)];
+  var snake3 = [Rand(xNum), Rand(yNum)];
+  var snake4 = [Rand(xNum), Rand(yNum)];
   var snakes = [snake1, snake2, snake3,snake4];
   setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
       if (dir == 0) {
         snakes[i][1]--;
-        if(snakes[i][1] < 0){snakes[i][1] = xNum-1 }
+        if(snakes[i][1] < 0){snakes[i][1] = yNum-1 }
       } else if (dir == 1) {
         snakes[i][0]++; 
         if(snakes[i][0] >= xNum){snakes[i][0] = 0 }
@@ -99,17 +99,17 @@ function SnakeArt(id) {
         if(snakes[i][1] >= yNum){snakes[i][1] = 0 }
       } else if (dir == 3) {
         snakes[i][0]--;
-        if(snakes[i][0] < 0){snakes[i][0] = yNum-1 }
+        if(snakes[i][0] < 0){snakes[i][0] = xNum-1 }
       }
-      var row = snakes[i][0];
-      var col = snakes[i][1];
+      var x = snakes[i][0];
+      var y = snakes[i][1];
 
-      if(board[row][col] == 1){
-        colorDict = {0:color1,1:color2,2:color3,3:color4};
-        c.fillStyle =colorDict[i]
-        c.fillRect(x * xBox, y * yBox, xBox, yBox );
-        board[row][col] = 1;
-      }
+      //if(board[y][x] == 1){
+      colorDict = {0:color1,1:color2,2:color3,3:color4};
+      c.fillStyle =colorDict[i]
+      c.fillRect(x * xBox, y * yBox, xBox, yBox );
+      board[y][x] = 1;
+      //}
     }
     //does this every 50 miliseconds
   }, .001);
