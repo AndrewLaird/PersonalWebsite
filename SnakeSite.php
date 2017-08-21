@@ -74,6 +74,7 @@ function SnakeArt(id) {
       board[y][x] = 0;
     }
   }
+  console.log(board)
 
   c.lineWidth = 1;
  
