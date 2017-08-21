@@ -74,6 +74,7 @@ function SnakeArt(id) {
       board[y][x] = 0;
     }
   }
+  console.log(board)
 
   c.lineWidth = 1;
  
@@ -100,13 +101,14 @@ function SnakeArt(id) {
       }
       var x = snakes[i][0];
       var y = snakes[i][1];
-      
-      if(board[y][x] == 1){
-        colorDict = {0:color1,1:color2,2:color3,3:color4};
-        c.fillStyle =colorDict[i]
-        c.fillRect(x * xBox, y * yBox, xBox, yBox );
-        board[y][x] = 1;
-      }
+      console.log(board)
+
+      //if(board[y][x] == 1){
+      colorDict = {0:color1,1:color2,2:color3,3:color4};
+      c.fillStyle =colorDict[i]
+      c.fillRect(x * xBox, y * yBox, xBox, yBox );
+      //board[y][x] = 1;
+      //}
     }
     //does this every 50 miliseconds
   }, .001);
