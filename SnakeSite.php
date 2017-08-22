@@ -74,10 +74,6 @@ function SnakeArt(id) {
       board[y][x] = 0;
     }
   }
-  console.log(board)
-  console.log(xNum)
-  console.log(yNum)
-
   c.lineWidth = 1;
  
   var snake1 = [Rand(xNum), Rand(yNum)];
