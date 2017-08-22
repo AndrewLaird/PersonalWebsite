@@ -104,7 +104,7 @@ function SnakeArt(id) {
       var x = snakes[i][0];
       var y = snakes[i][1];
 
-      if(board[y][x] == 1){
+      if(board[y][x] == 0){
         colorDict = {0:color1,1:color2,2:color3,3:color4};
         c.fillStyle =colorDict[i]
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
