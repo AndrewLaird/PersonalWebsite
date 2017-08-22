@@ -74,13 +74,21 @@ function SnakeArt(id) {
       board[y][x] = 0;
     }
   }
+  console.log(board)
+  console.log(xNum)
+  console.log(yNum)
+
   c.lineWidth = 1;
  
   var snake1 = [Rand(xNum), Rand(yNum)];
   var snake2 = [Rand(xNum), Rand(yNum)];
   var snake3 = [Rand(xNum), Rand(yNum)];
   var snake4 = [Rand(xNum), Rand(yNum)];
-  var snakes = [snake1, snake2, snake3,snake4];
+  var snake5 = [Rand(xNum), Rand(yNum)];
+  var snake6 = [Rand(xNum), Rand(yNum)];
+  var snake7 = [Rand(xNum), Rand(yNum)];
+  var snake8 = [Rand(xNum), Rand(yNum)];
+  var snakes = [snake1, snake2, snake3,snake4,snake5,snake6,snake7,snake8];
   setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
@@ -101,7 +109,7 @@ function SnakeArt(id) {
       var y = snakes[i][1];
 
       if(board[y][x] == 0){
-        colorDict = {0:color1,1:color2,2:color3,3:color4};
+        colorDict = {0:color1,1:color2,2:color3,3:color4,4:color1,5:color2,6:color3,7:color4};
         c.fillStyle =colorDict[i]
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
         board[y][x] = 1;
