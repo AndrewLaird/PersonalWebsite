@@ -123,19 +123,18 @@ function SnakeArt(id) {
 
 //setting up closing script
 function closing_save(){
-  clearInterval(setIntervalId)
+  //clearInterval(setIntervalId)
   //realizing its hard to store the whole game board in a cookie
   var json_board = JSON.stringify(board);
   window.localStorage.setItem('board',json_board);
-  console.log(window.localStorage.getItem("board"))
+  //console.log(window.localStorage.getItem("board"))
   return 0
 }
 
 //loading the json_board
 function startup_load(){
-
   json_board = JSON.parse(window.localStorage.getItem("board"));
-  console.log(json_board);
+  //console.log(json_board);
   return 0;
 }
 
