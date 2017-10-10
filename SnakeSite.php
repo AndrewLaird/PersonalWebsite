@@ -1,3 +1,11 @@
+<!--
+Created by: Andrew Laird
+
+This program works by keeping track the heads of 4-8 'snakes' that paint the canvas they sit on as they move
+it creates fun pixel art if you give some time.
+a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/vGogZj
+
+-->
 <header>
 </header>
 <body>
@@ -43,10 +51,12 @@ var board = [];
 var setIntervalId = 0;
 
 window.onload = SnakeArt("canvas");
-window.onbeforeunload = closing_save();
+//not implemented yet
+//window.onbeforeunload = closing_save;
 
 function SnakeArt(id) {
-  startup_load();
+  //not implemented yet
+  //startup_load();
   var canvas = document.getElementById(id);
   var c = canvas.getContext("2d");
   
@@ -56,8 +66,6 @@ function SnakeArt(id) {
   var width = canvas.width;
   var height = canvas.height;
 
-  //c.fillStyle = "gray";
-  //c.fillRect(0, 0, width, height);
   c.strokeStyle = "black";
   c.strokeWidth = 5;
   c.strokeRect(0, 0, width+5 , height+5);
@@ -86,11 +94,11 @@ function SnakeArt(id) {
   var snake2 = [Rand(xNum), Rand(yNum)];
   var snake3 = [Rand(xNum), Rand(yNum)];
   var snake4 = [Rand(xNum), Rand(yNum)];
-  var snake5 = [Rand(xNum), Rand(yNum)];
-  var snake6 = [Rand(xNum), Rand(yNum)];
-  var snake7 = [Rand(xNum), Rand(yNum)];
-  var snake8 = [Rand(xNum), Rand(yNum)];
-  var snakes = [snake1, snake2, snake3,snake4,snake5,snake6,snake7,snake8];
+  // var snake5 = [Rand(xNum), Rand(yNum)];
+  // var snake6 = [Rand(xNum), Rand(yNum)];
+  // var snake7 = [Rand(xNum), Rand(yNum)];
+  // var snake8 = [Rand(xNum), Rand(yNum)];
+  var snakes = [snake1, snake2, snake3,snake4]//,snake5,snake6,snake7,snake8];
   setIntervalId = setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
@@ -117,8 +125,8 @@ function SnakeArt(id) {
         board[y][x] = i;
       }
     }
-    //does this every 50 miliseconds
-  }, 50);
+    //does this every 1 miliseconds
+  }, 1);
 }
 
 //setting up closing script
@@ -143,30 +151,5 @@ function startup_load(){
 function Rand(num) {
   return Math.floor(Math.random() * num);
 }
-
-// function createCookie(name,value,days) {
-//     var expires = "";
-//     if (days) {
-//         var date = new Date();
-//         date.setTime(date.getTime() + (days*24*60*60*1000));
-//         expires = "; expires=" + date.toUTCString();
-//     }
-//     document.cookie = name + "=" + value + expires + "; path=/";
-// }
-
-// function readCookie(name) {
-//     var nameEQ = name + "=";
-//     var ca = document.cookie.split(';');
-//     for(var i=0;i < ca.length;i++) {
-//         var c = ca[i];
-//         while (c.charAt(0)==' ') c = c.substring(1,c.length);
-//         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-//     }
-//     return null;
-// }
-
-// function eraseCookie(name) {
-//     createCookie(name,"",-1);
-// }
 
 </script>
