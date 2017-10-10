@@ -41,6 +41,9 @@ a{
 <script type="text/javascript">
 
 window.onload = SnakeArt("canvas");
+var board = [];
+
+window.onbeforeunload = closing_save();
 
 function SnakeArt(id) {
   var canvas = document.getElementById(id);
@@ -63,11 +66,11 @@ function SnakeArt(id) {
   var color3 = "rgb(50,50,154)";
   var color4 = "rgb(0,0,150)";
 
-  var xNum = Math.ceil(width / 10);
-  var yNum = Math.ceil(height / 10);
+  var xNum = Math.floor(width / 10);
+  var yNum = Math.floor(height / 10);
   var xBox = width / xNum;
   var yBox = height / yNum;
-  var board = [];
+  //var board = [];
   for (y = 0; y < yNum; y++) {
     board[y] = [];
     for (x = 0; x < xNum; x++) {
@@ -79,6 +82,7 @@ function SnakeArt(id) {
   console.log(yNum)
 
   c.lineWidth = 1;
+
  
   var snake1 = [Rand(xNum), Rand(yNum)];
   var snake2 = [Rand(xNum), Rand(yNum)];
@@ -112,15 +116,49 @@ function SnakeArt(id) {
         colorDict = {0:color1,1:color2,2:color3,3:color4,4:color1,5:color2,6:color3,7:color4};
         c.fillStyle =colorDict[i]
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
-        board[y][x] = 1;
+        board[y][x] = i;
       }
     }
     //does this every 50 miliseconds
-  }, .001);
+  }, 50);
+}
+
+//setting up closing script
+function closing_save(){
+  //realizing its hard to store the whole game board in a cookie
+  var json_board = JSON.stringify(board);
+  createCookie("board",json_board,1);
+  console.log(readCookie("board"))
+  return 0
 }
 
 function Rand(num) {
   return Math.floor(Math.random() * num);
+}
+
+function createCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
 }
 
 </script>
