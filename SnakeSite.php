@@ -46,6 +46,7 @@ var board = [];
 window.onbeforeunload = closing_save();
 
 function SnakeArt(id) {
+  startup_load();
   var canvas = document.getElementById(id);
   var c = canvas.getContext("2d");
   
@@ -77,9 +78,6 @@ function SnakeArt(id) {
       board[y][x] = 0;
     }
   }
-  console.log(board)
-  console.log(xNum)
-  console.log(yNum)
 
   c.lineWidth = 1;
 
@@ -131,6 +129,15 @@ function closing_save(){
   console.log(readCookie("board"))
   return 0
 }
+
+//loading the json_board
+function startup_load(){
+  json_board = JSON.parse(readCookie("board"));
+  console.log(json_board);
+  return 0;
+}
+
+
 
 function Rand(num) {
   return Math.floor(Math.random() * num);
