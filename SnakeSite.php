@@ -124,14 +124,15 @@ function SnakeArt(id) {
 function closing_save(){
   //realizing its hard to store the whole game board in a cookie
   var json_board = JSON.stringify(board);
-  createCookie("board",json_board,1);
-  console.log(readCookie("board"))
+  window.localStorage.setItem('board',json_board);
+  console.log(window.localStorage.getItem("board"))
   return 0
 }
 
 //loading the json_board
 function startup_load(){
-  json_board = JSON.parse(readCookie("board"));
+
+  json_board = JSON.parse(window.localStorage.getItem("board"));
   console.log(json_board);
   return 0;
 }
@@ -142,29 +143,29 @@ function Rand(num) {
   return Math.floor(Math.random() * num);
 }
 
-function createCookie(name,value,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
-}
+// function createCookie(name,value,days) {
+//     var expires = "";
+//     if (days) {
+//         var date = new Date();
+//         date.setTime(date.getTime() + (days*24*60*60*1000));
+//         expires = "; expires=" + date.toUTCString();
+//     }
+//     document.cookie = name + "=" + value + expires + "; path=/";
+// }
 
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
+// function readCookie(name) {
+//     var nameEQ = name + "=";
+//     var ca = document.cookie.split(';');
+//     for(var i=0;i < ca.length;i++) {
+//         var c = ca[i];
+//         while (c.charAt(0)==' ') c = c.substring(1,c.length);
+//         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+//     }
+//     return null;
+// }
 
-function eraseCookie(name) {
-    createCookie(name,"",-1);
-}
+// function eraseCookie(name) {
+//     createCookie(name,"",-1);
+// }
 
 </script>
