@@ -40,8 +40,9 @@ a{
 
 <script type="text/javascript">
 var board = [];
-window.onload = SnakeArt("canvas");
+var setIntervalId = 0;
 
+window.onload = SnakeArt("canvas");
 window.onbeforeunload = closing_save();
 
 function SnakeArt(id) {
@@ -90,7 +91,7 @@ function SnakeArt(id) {
   var snake7 = [Rand(xNum), Rand(yNum)];
   var snake8 = [Rand(xNum), Rand(yNum)];
   var snakes = [snake1, snake2, snake3,snake4,snake5,snake6,snake7,snake8];
-  setInterval(function() {
+  setIntervalId = setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
       if (dir == 0) {
@@ -122,6 +123,7 @@ function SnakeArt(id) {
 
 //setting up closing script
 function closing_save(){
+  clearInterval(setIntervalId)
   //realizing its hard to store the whole game board in a cookie
   var json_board = JSON.stringify(board);
   window.localStorage.setItem('board',json_board);
