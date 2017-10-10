@@ -41,7 +41,6 @@ a{
 <script type="text/javascript">
 
 window.onload = SnakeArt("canvas");
-var board = [];
 
 window.onbeforeunload = closing_save();
 
@@ -134,6 +133,7 @@ function closing_save(){
 function startup_load(){
   json_board = JSON.parse(readCookie("board"));
   console.log(json_board);
+  var board = [];
   return 0;
 }
 
