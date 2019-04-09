@@ -31,17 +31,17 @@ a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/
       </h3> 
       <p>Using PPO and a laptop CPU to train a robot to walk (OpenAI BipedalWalker):</p>
       <div style="width:100%;height:400px;">
-          <img src="~/PersonalWebsite/BipedalWalker190.gif">    
+          <img src="BipedalWalker190.gif">    
       </div>
       
       <p>Reacher Arm in a lower dimensional environment (OpenAI RoboSchool):</p>
       <div style="width:100%;height:400px;">
-        <img src="~/PersonalWebsite/Reacher18.gif">
+        <img src="Reacher18.gif">
       </div>
       
       <p>Robotic Arm in the Fetch Reach environment (OpenAI Mujoco):</p>
       <div style="width:100%;height:400px;">
-        <img src="~/PersonalWebsite/Reacher-Solved.gif">
+        <img src="Reacher-Solved.gif">
       </div>
       <p>
           Other Research Topics Include DDQN, Ciriculum Learning, and how to read reasearch papers effciently.
