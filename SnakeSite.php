@@ -2,7 +2,7 @@
 Created by: Andrew Laird
 
 This program works by keeping track the heads of 4-8 'snakes' that paint the canvas they sit on as they move
-it creates fun pixel art if you give some time.
+it creates fun pixel art if you give it some time.
 a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/vGogZj
 
 -->
@@ -17,46 +17,76 @@ a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/
   <div id = "Page">
     <h1 id = "Title"> Andrew Laird</h1>
     <a href = "https://github.com/AndrewLaird">(GitHub)</a>
-    <a href = "https://www.linkedin.com/in/andrew-laird-a814b8134">(Linkedin)</a>
+    <a href = "https://www.linkedin.com/in/andrew-laird-a814b8134">(Linked In)</a>
     <a href = "http://poems.calit2.uci.edu/about">(Projects)</a>
-    <a href = "http://www.codepen.io/LairdAndrew">(CodePen)<a>
+    <a href = "http://www.codepen.io/LairdAndrew">(CodePen)</a>
     
-    
+    <div id="Content">
+      <h2> Computer Science, Specilization in AI </h2>
+      
+      <h1> Reinforcment Learning </h1>
+      
+      <h3>
+        Quarter Long Research Project in Reinforcement Learning towards the goal of a self learning robotic arm:
+      </h3> 
+      <p>Using PPO and a laptop CPU to train a robot to walk (OpenAI BipedalWalker):</p>
+      <div style="width:100%;height:400px;">
+          <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg">    
+      </div>
+      
+      <p>Reacher Arm in a lower dimensional environment (OpenAI RoboSchool):</p>
+      <div style="width:100%;height:400px;">
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg">
+      </div>
+      
+      <p>Robotic Arm in the Fetch Reach environment (OpenAI Mujoco):</p>
+      <div style="width:100%;height:400px;">
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg">
+      </div>
+      <p>
+          Other Research Topics Include DDQN, Ciriculum Learning, and how to read reasearch papers effciently.
+      </p>
+    </div>
   </div>
 </body>
 <style>
+  
+  img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
 
-#canvas{
-  position: absolute;
-}
-#Page{
-  color:rgb(50,0,50);
-  position:relative;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  text-align:center;
-  padding:5%;
-}
-a{
-  font-size:25px;
-  text-decoration:none;
-  color:inherit;
-}
+  
+  #canvas{
+    position: fixed;
+  }
+  #Page{
+    background-color:rgb(138,43,226);
+    color:rgb(250,250,250);
+    position:relative;
+    #text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    width:50%;
+    height:25%;
+    margin: 0 auto;
+    text-align:center;
+    padding:1%;
+  }
+  a{
+    font-size:25px;
+    text-decoration:none;
+    color:inherit;
+  }
 
 
 
 </style>
 
 <script type="text/javascript">
-var board = [];
-var setIntervalId = 0;
 
 window.onload = SnakeArt("canvas");
-//not implemented yet
-//window.onbeforeunload = closing_save;
 
 function SnakeArt(id) {
-  //not implemented yet
-  //startup_load();
   var canvas = document.getElementById(id);
   var c = canvas.getContext("2d");
   
@@ -66,6 +96,8 @@ function SnakeArt(id) {
   var width = canvas.width;
   var height = canvas.height;
 
+  c.fillStyle = "white";
+  c.fillRect(0, 0, width, height);
   c.strokeStyle = "black";
   c.strokeWidth = 5;
   c.strokeRect(0, 0, width+5 , height+5);
@@ -75,31 +107,29 @@ function SnakeArt(id) {
   var color3 = "rgb(50,50,154)";
   var color4 = "rgb(0,0,150)";
 
-  var xNum = Math.floor(width / 10);
-  var yNum = Math.floor(height / 10);
+  var xNum = Math.ceil(width / 10);
+  var yNum = Math.ceil(height / 10);
   var xBox = width / xNum;
   var yBox = height / yNum;
-  //var board = [];
+  var board = [];
   for (y = 0; y < yNum; y++) {
     board[y] = [];
     for (x = 0; x < xNum; x++) {
       board[y][x] = 0;
     }
   }
+  console.log(board)
+  console.log(xNum)
+  console.log(yNum)
 
   c.lineWidth = 1;
-
  
   var snake1 = [Rand(xNum), Rand(yNum)];
   var snake2 = [Rand(xNum), Rand(yNum)];
   var snake3 = [Rand(xNum), Rand(yNum)];
   var snake4 = [Rand(xNum), Rand(yNum)];
-  // var snake5 = [Rand(xNum), Rand(yNum)];
-  // var snake6 = [Rand(xNum), Rand(yNum)];
-  // var snake7 = [Rand(xNum), Rand(yNum)];
-  // var snake8 = [Rand(xNum), Rand(yNum)];
-  var snakes = [snake1, snake2, snake3,snake4]//,snake5,snake6,snake7,snake8];
-  setIntervalId = setInterval(function() {
+  var snakes = [snake1, snake2, snake3,snake4];
+  setInterval(function() {
     for (var i = 0; i < snakes.length; i++) {
       var dir = Rand(4);
       if (dir == 0) {
@@ -119,34 +149,15 @@ function SnakeArt(id) {
       var y = snakes[i][1];
 
       if(board[y][x] == 0){
-        colorDict = {0:color1,1:color2,2:color3,3:color4,4:color1,5:color2,6:color3,7:color4};
+        colorDict = {0:color1,1:color2,2:color3,3:color4};
         c.fillStyle =colorDict[i]
         c.fillRect(x * xBox, y * yBox, xBox, yBox );
-        board[y][x] = i;
+        board[y][x] = 1;
       }
     }
-    //does this every 1 miliseconds
+    //Repeat this on a timer
   }, 1);
 }
-
-//setting up closing script
-function closing_save(){
-  //clearInterval(setIntervalId)
-  //realizing its hard to store the whole game board in a cookie
-  var json_board = JSON.stringify(board);
-  window.localStorage.setItem('board',json_board);
-  //console.log(window.localStorage.getItem("board"))
-  return 0
-}
-
-//loading the json_board
-function startup_load(){
-  json_board = JSON.parse(window.localStorage.getItem("board"));
-  //console.log(json_board);
-  return 0;
-}
-
-
 
 function Rand(num) {
   return Math.floor(Math.random() * num);
