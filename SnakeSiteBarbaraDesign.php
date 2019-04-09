@@ -1,18 +1,24 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800" rel="stylesheet">
 <div id="background">
   <canvas id="canvas" width="100%" height="100%">
     Im sorry you require canvas
     </canvas>
 </div>
-<div id="Page" class="cl-effect-1">
+
+<div class="page">
   <h1 id="Title"> Andrew Laird</h1>
   <h2> Computer Science - Specialization in AI </h2>
+</div>
+<div class="cl-effect-1 page">
   <nav>
     <a href="https://github.com/AndrewLaird">GitHub</a>
     <a href="https://www.linkedin.com/in/andrew-laird-a814b8134">Linked In</a>
     <a href="http://poems.calit2.uci.edu/about">Projects</a>
     <a href="http://www.codepen.io/LairdAndrew">CodePen</a>
   </nav>
+</div>
+<div class="page">
   <div id="Content">
 
 
@@ -22,61 +28,68 @@
       Quarter Long Research Project in Reinforcement Learning <br/>towards the goal of a self learning robotic arm
     </h3>
     <div class="polaroid">
+     <div class="caption">
+        <p>Using PPO and a laptop CPU to train a robot to walk<br>OpenAI BipedalWalker</p>
+      </div>
       <img src="https://www.ics.uci.edu/~alaird/BipedalWalker190.gif" alt="Using PPO and a laptop CPU to train a robot to walk - OpenAI BipedalWalker" style="width:100%">
-      <div class="caption">
-        <p>Using PPO and a laptop CPU to train a robot to walk - OpenAI BipedalWalker</p>
-      </div>
+      
     </div>
 
     <div class="polaroid">
+      <div class="caption">
+        <p>Reacher Arm in a lower dimensional environment<br>OpenAI RoboSchool</p>
+      </div>
       <img src="https://www.ics.uci.edu/~alaird/Reacher18.gif" alt="Reacher Arm in a lower dimensional environment - OpenAI RoboSchool" style="width:100%">
-      <div class="caption">
-        <p>Reacher Arm in a lower dimensional environment - OpenAI RoboSchool</p>
-      </div>
+     
     </div>
 
     <div class="polaroid">
-      <img src="https://www.ics.uci.edu/~alaird/Reacher-Solved.gif" alt="Robotic Arm in the Fetch Reach environment - OpenAI Mujoco" style="width:100%">
-      <div class="caption">
-        <p>Robotic Arm in the Fetch Reach environment - OpenAI Mujoco</p>
+    <div class="caption">
+        <p>Robotic Arm in the Fetch Reach environment<br>OpenAI Mujoco</p>
       </div>
+      <img src="https://www.ics.uci.edu/~alaird/Reacher-Solved.gif" alt="Robotic Arm in the Fetch Reach environment - OpenAI Mujoco" style="width:100%">
+      
     </div>
 
 
 
     <p>
-      Other research topics include DDQN, Ciriculum Learning, and how to read reasearch papers effciently.
+      Other research topics include DDQN, Ciriculum Learning, and How to Read Research Papers Effciently.
     </p>
   </div>
 </div>
 
 <style>
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #canvas {
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
-#Page {
+.page {
   background-color: #d3bdb0;
   color: #715b64;
   position: relative;
   width: 50%;
-  margin: 0 auto;
+  margin: 25px auto;
   text-align: center;
   padding: 1%;
   min-width: 650px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+
 nav a {
   position: relative;
   display: inline-block;
-  margin: 15px 25px;
+  margin: 15px 15px;
   outline: none;
-  color: #899373;
+  color: #d3bdb0;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -89,7 +102,9 @@ nav a:focus {
 }
 
 /* Effect 1: Brackets */
-
+.cl-effect-1 {
+  background-color: #69385c;
+}
 .cl-effect-1 a::before,
 .cl-effect-1 a::after {
   display: inline-block;
@@ -126,25 +141,38 @@ nav a:focus {
 }
 
 h1 {
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+h3 {
+  font-weight: normal;
 }
 
 div.polaroid {
   width: 80%;
-  background-color: #899373;
+  background-color: #f5f1ed;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   margin: 10%;
 }
 
 img {
-  width: 100%
+  width: 100%;
 }
 
 div.caption {
   text-align: center;
   padding: 10px 20px;
-  color: white;
+  color: #899373;
+}
+
+.caption p {
+    font-weight: 300;
 }
 
 </style>
