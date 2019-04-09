@@ -31,7 +31,7 @@ a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/
       </h3> 
       <p>Using PPO and a laptop CPU to train a robot to walk (OpenAI BipedalWalker):</p>
       <div style="width:100%;height:400px;">
-          <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg">    
+          <img src="BipedalWalker190.gif">    
       </div>
       
       <p>Reacher Arm in a lower dimensional environment (OpenAI RoboSchool):</p>
@@ -65,9 +65,7 @@ a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/
     background-color:rgb(138,43,226);
     color:rgb(250,250,250);
     position:relative;
-    #text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     width:50%;
-    height:25%;
     margin: 0 auto;
     text-align:center;
     padding:1%;
