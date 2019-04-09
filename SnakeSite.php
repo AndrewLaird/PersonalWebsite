@@ -24,7 +24,7 @@ a quicker version can be seen on my codepen: https://codepen.io/LairdAndrew/pen/
     <div id="Content">
       <h2> Computer Science, Specilization in AI </h2>
       
-      <h1> Reinforcment Learning </h1>
+      <h1> Reinforcement Learning </h1>
       
       <h3>
         Quarter Long Research Project in Reinforcement Learning towards the goal of a self learning robotic arm:
