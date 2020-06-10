@@ -6,7 +6,7 @@
 </div>
 
 <?php
-    $path = '/PersonalWebsite';
+    $path = './PersonalWebsite';
     include($path . "/header/header.php");
 ?>
 <link href = <?echo $path. "/splash/SplashScreen.css"?> rel="stylesheet">
