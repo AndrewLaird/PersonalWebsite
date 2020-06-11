@@ -3,8 +3,7 @@
 <div class='centerHeader'></div>
 
 <?php
-    $path = '/PersonalWebsite';
-    include($path . "/snakeBackground/Background.php");
+    $path = './PersonalWebsite';
     include($path . "/header/header.php");
     #include($path . "/reinforcement/reinforcement.php");
 ?>
