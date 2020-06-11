@@ -1,6 +1,10 @@
-
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+.centerHeader {
+    width:10px;
+    height: 30%;
 }
 
 .fullscreen {
