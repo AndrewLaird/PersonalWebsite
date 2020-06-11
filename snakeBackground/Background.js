@@ -1,6 +1,12 @@
+var interval_id = 0
 window.onload = function(){
-    SnakeArt("canvas");
+    interval_id = SnakeArt("canvas");
 };
+window.onresize = function(){
+    clearInterval(interval_id);
+    interval_id = SnakeArt("canvas");
+
+}
 
 function SnakeArt(id) {
     var canvas = document.getElementById(id);
@@ -11,7 +17,6 @@ function SnakeArt(id) {
 
     var width = canvas.width;
     var height = canvas.height;
-    console.log(width,height);
 
     c.fillStyle = "#f5f1ed";
     c.fillRect(0, 0, width, height);
@@ -47,9 +52,6 @@ function SnakeArt(id) {
             board[y][x] = 0;
         }
     }
-    console.log(board)
-    console.log(xNum)
-    console.log(yNum)
 
     c.lineWidth = 1;
 
@@ -86,7 +88,7 @@ function SnakeArt(id) {
 
 
     
-    setInterval(function() {
+    var interval_id = setInterval(function() {
         for (var i = 0; i < snakes.length; i++) {
             var dir = Rand(4);
             while(dir == (previous[i]+2)%4){
@@ -119,6 +121,7 @@ function SnakeArt(id) {
         }
         //Repeat this on a timer
     }, 10);
+    return interval_id;
 }
 
 function Rand(num) {
