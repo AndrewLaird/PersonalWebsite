@@ -1,4 +1,5 @@
-<link rel="stylesheet" href = <?php echo $path . "/header/header.css";?> >
+
+<link rel="stylesheet" href = "./header/header.css" >
 <div class="page">
   <h1 id="Title"> Andrew Laird</h1>
   <h2> FullStack + AI       </h2>
