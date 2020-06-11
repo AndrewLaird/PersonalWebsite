@@ -2,7 +2,7 @@
 <link rel="stylesheet" href = "./header/header.css" >
 <div class="page">
   <h1 id="Title"> Andrew Laird</h1>
-  <h2> FullStack + AI       </h2>
+  <h2 id="subheader"> FullStack + AI       </h2>
 </div>
 <div class="cl-effect-1 page">
   <nav>

@@ -73,13 +73,14 @@ nav a:focus {
   transform: translateX(0px);
 }
 
-h1 {
+h1#Title {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
 
-h2 {
+h2#subheader {
   font-weight: normal;
+  font-size:40px;
 }
 
 h3 {
