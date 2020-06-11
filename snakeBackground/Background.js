@@ -1,4 +1,6 @@
-window.onload = SnakeArt("canvas");
+window.onload = function(){
+    SnakeArt("canvas");
+};
 
 function SnakeArt(id) {
     var canvas = document.getElementById(id);
@@ -9,6 +11,7 @@ function SnakeArt(id) {
 
     var width = canvas.width;
     var height = canvas.height;
+    console.log(width,height);
 
     c.fillStyle = "#f5f1ed";
     c.fillRect(0, 0, width, height);
@@ -29,7 +32,7 @@ function SnakeArt(id) {
     //var color4 = "#FFFFFF";
 
     var xNum = Math.ceil(width / 10);
-    var yNum = Math.ceil(width / 10);
+    var yNum = Math.ceil(height / 10);
 
     // make sure that there is always an even number of pixels
     xNum = xNum - xNum%2
@@ -102,7 +105,6 @@ function SnakeArt(id) {
 
                 x = mod((x+delta_x) , (xNum-2));
                 y = mod((y+delta_y) , (yNum-2));
-                console.log(x,y);
 
 
                 if (board[y][x] == 0) {
