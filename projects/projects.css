@@ -2,6 +2,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.fullscreen {
+    width: 10px;
+    height: 100%;
+}
 
 .page {
   background-color: #d3bdb0;
@@ -73,14 +77,13 @@ nav a:focus {
   transform: translateX(0px);
 }
 
-h1#Title {
+h1 {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
 
-h2#subheader {
+h2 {
   font-weight: normal;
-  font-size:40px;
 }
 
 h3 {
@@ -102,9 +105,9 @@ img {
 div.caption {
   text-align: center;
   padding: 10px 20px;
+  font-weight: 500;
+  font-size: 24px;
   color: #899373;
+   
 }
 
-.caption p {
-    font-weight: 300;
-}
