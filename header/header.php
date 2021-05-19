@@ -6,7 +6,7 @@
 <div class="cl-effect-1 header">
   <nav>
     <a href="https://github.com/AndrewLaird">GitHub</a>
-    <a href="https://www.linkedin.com/in/andrew-laird-a814b8134">Linked In</a>
+    <a href="https://www.linkedin.com/in/andrew-laird-a814b8134">LinkedIn</a>
     <a href="/projects">Projects</a>
     <a href="https://github.com/AndrewLaird/Resumes/blob/master/AndrewLairdResume.pdf">Resume</a>
   </nav>
