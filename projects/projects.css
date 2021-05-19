@@ -103,6 +103,14 @@ h3 {
   font-weight: normal;
 }
 
+.row{
+  display:flex
+}
+
+.keyboard-col-large{
+  margin-top:auto
+}
+
 div.polaroid {
   width:98%;
   background-color: #f5f1ed;

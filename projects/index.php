@@ -15,7 +15,26 @@
         <span class='bolder'>Chess Detector </span> - <a href="http://chessdetector.com">ChessDetector.com </a>
         <hr>
         <p class="left">
-            Takes images of chess boards and ouptuts the chessboards in a format that the major chess websites understand. The goal of this project was to add something to the wonderful chess community. I got into chess when queens gambit came out like everyone else. I was surprised by how much video content there was to help anyone become a better player. This tool allows those videos to be even more helpful. A learner can take a position from a video they are watching and deep dive into it using one of the chess analyzers such as lichess or Chess.com. This project was fun for me because I was able to use my ai skills in a real world context and learn React while I was at it.
+          <ul>
+            <li>
+              Takes Images of Chessboards and converts them into a format used by the major Chess websites (FEN). 
+            </li>
+            <li>
+              Unleases extra potential out of tutorial Youtube videos. Allowing the learner to take a deep dive into a chess position they are being taught  in a video.
+            </li>
+            <li>
+              Two different segmentation models for finding chess boards, and then, chess pieces within the board. Both are YOLOv5 models
+            </li>
+            <li>
+              Got to give back to the chess community which provides so many free and helpful resources
+            </li>
+            <li>
+              React Website to showcase the model, hosted on the EC2 free tier
+            </li>
+            <li>
+              Skills Used: Python, Pytorch, Image Segmentation (Box Network), React, AWS, Bash
+            </li>
+          </ul>
         </p>
       </div>
         <div class="caption">
@@ -28,13 +47,30 @@
      <div class="caption">
         <p><span class='bolder'>Keyboard</span>
         <hr>
-	      <img src="./GlamorKeyboard.jpg"  alt="Keyboard" style="width:50%" align='left'>
-	</p>
-	<p class="left">
-I built a handwired split ergonomic keyboard. Keyboards like this have been popping up in the last 5 years after a talk by Matt Adereth <a href="https://www.youtube.com/watch?v=uk3A41U0iO4&ab_channel=ClojureTV">(link)</a>.  Below is what the underside looks like. It was a mess of soldering at all sorts of weird angles but after a couple sessions, I got the whole keyboard working. I respect that this keyboard is a silly but its really fun to do your work on something that you built yourself. And the added benifit of being able to use QMK firmware and all of it's functionality makes me never want to go back.
-	</p>
+        </p>
+        <p class="left">
+          <ul>
+            <li>
+              Built a split ergonomic keyboard
+            </li>
+            <li>
+              I just think it's neat
+            </li>
+            <li>
+              The added fuctionality from the QMK firmware allows me to 
+            </li>
+          </u>
+          I built a handwired split ergonomic keyboard. Keyboards like this have been popping up in the last 5 years after a talk by Matt Adereth <a href="https://www.youtube.com/watch?v=uk3A41U0iO4&ab_channel=ClojureTV">(link)</a>.  Below is what the underside looks like. It was a mess of soldering at all sorts of weird angles but after a couple sessions, I got the whole keyboard working. I respect that this keyboard is a silly but its really fun to do your work on something that you built yourself. And the added benifit of being able to use QMK firmware and all of it's functionality makes me never want to go back.
+        </p>
       </div>
-      <img src="./HandWiredKeyboard.jpg"  alt="HandWiredKeyboard" style="transform:rotate(270de); width:100%; ">
+      <div class="row">
+        <div class="keyboard-col-small">
+          <img src="./GlamorKeyboard.jpg"  alt="Keyboard">
+        </div>
+        <div class="keyboard-col-large">
+          <img src="./HandWiredKeyboard.jpg"  alt="HandWiredKeyboard">
+        </div>
+      </div>
     </div>
 
     <div class="polaroid">
