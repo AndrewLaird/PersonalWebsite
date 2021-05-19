@@ -3,11 +3,11 @@
 }
 
 
-.page {
+.header {
   background-color: #d3bdb0;
   color: #715b64;
   position: relative;
-  width: 50%;
+  max-width:800px;
   margin: 25px auto;
   text-align: center;
   padding: 1%;
@@ -100,7 +100,6 @@ img {
 }
 
 div.caption {
-  text-align: center;
   padding: 10px 20px;
   color: #899373;
 }

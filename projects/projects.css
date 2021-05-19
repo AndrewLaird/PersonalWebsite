@@ -11,15 +11,28 @@
   background-color: #d3bdb0;
   color: #715b64;
   position: relative;
-  width: 50%;
+  max-width:800px;
   margin: 25px auto;
-  text-align: center;
   padding: 1%;
   min-width: 650px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.nolink{
+  text-decoration:none;
+  color: inherit;
+}
 
+.bolder{
+
+}
+
+iframe{
+  width:99%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
 
 nav a {
   position: relative;
@@ -91,11 +104,12 @@ h3 {
 }
 
 div.polaroid {
-  width: 80%;
+  width:98%;
   background-color: #f5f1ed;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
-  margin: 10%;
+  margin: 1%;
+  margin-top:20px;
 }
 
 img {
@@ -103,7 +117,6 @@ img {
 }
 
 div.caption {
-  text-align: center;
   padding: 10px 20px;
   font-weight: 500;
   font-size: 24px;
