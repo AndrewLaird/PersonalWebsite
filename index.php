@@ -8,5 +8,6 @@
     #include($path . "/reinforcement/reinforcement.php");
 ?>
 <link href = "./SplashScreen.css" rel="stylesheet">
-<script src='./snakeBackground/Background.js'></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.js">
+<script src='./snakeBackground/BackgroundThree.js'></script>
 <link rel='stylesheet' href='./snakeBackground/Background.css' >
