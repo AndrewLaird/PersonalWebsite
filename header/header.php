@@ -8,6 +8,6 @@
     <a href="https://github.com/AndrewLaird">GitHub</a>
     <a href="https://www.linkedin.com/in/andrew-laird-a814b8134">LinkedIn</a>
     <a href="/projects">Projects</a>
-    <a href="https://github.com/AndrewLaird/Resumes/blob/master/AndrewLairdResume.pdf">Resume</a>
+    <a href="/resume">Resume</a>
   </nav>
 </div>
