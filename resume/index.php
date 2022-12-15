@@ -8,6 +8,6 @@
 <link rel="stylesheet" href ="./resume.css" >
 <div class="page">
   <div id="Content">
-    <embed type="text/html" src="resume.html", width="100%", height="85vh">
+    <embed type="text/html" src="resume.html">
   </div>
 </div>
