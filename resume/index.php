@@ -7,7 +7,5 @@
 <link rel='stylesheet' href='../snakeBackground/Background.css' >
 <link rel="stylesheet" href ="./resume.css" >
 <div class="page">
-  <div id="Content">
-    <embed type="text/html" src="resume.html">
-  </div>
+  <embed type="text/html" src="resume.html">
 </div>
