@@ -3,7 +3,6 @@
 <div class="page">
   <div id="Content">
 
-
     <h1> Reinforcement Learning </h1>
 
     <h3>
