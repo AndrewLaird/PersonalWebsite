@@ -61,7 +61,7 @@ function SnakeArt(id) {
     var snake3 = [Math.round(xNum*1/8), Math.round(yNum*3/4)];
     var snake4 = [Math.round(xNum*7/8), Math.round(yNum*3/4)];
     var snakes = [snake1, snake2, snake3, snake4];
-    var previous = [0,0,0,0]
+    var revious = [0,0,0,0]
     colorDict = {
         0: color1,
         1: color2,
@@ -77,9 +77,6 @@ function SnakeArt(id) {
 
     };
 
-    function clamp(val,min,max){
-        return Math.min(Math.max(val, min), max)
-    }
     // javascript mod function returns negative for negative numbers
     function mod(n, m) {
         var remain = n % m;
@@ -97,7 +94,7 @@ function SnakeArt(id) {
             // give a bias toward exploration
             previous[i] = dir;
 
-            for(var j = 0; j < 2; j++){
+            for(var j = 0; j < 10; j++){
                 var x = snakes[i][0];
                 var y = snakes[i][1];
 
