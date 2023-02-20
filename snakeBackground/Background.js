@@ -88,13 +88,14 @@ function SnakeArt(id) {
     var interval_id = setInterval(function() {
         for (var i = 0; i < snakes.length; i++) {
             var dir = Rand(4);
+            var distance = Rand(10);
             while(dir == (previous[i]+2)%4){
                 var dir = Rand(4);
             }
             // give a bias toward exploration
             previous[i] = dir;
 
-            for(var j = 0; j < 10; j++){
+            for(var j = 0; j < distance; j++){
                 var x = snakes[i][0];
                 var y = snakes[i][1];
 
