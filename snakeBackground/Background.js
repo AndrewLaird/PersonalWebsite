@@ -61,7 +61,7 @@ function SnakeArt(id) {
     var snake3 = [Math.round(xNum*1/8), Math.round(yNum*3/4)];
     var snake4 = [Math.round(xNum*7/8), Math.round(yNum*3/4)];
     var snakes = [snake1, snake2, snake3, snake4];
-    var revious = [0,0,0,0]
+    var previous = [0,0,0,0]
     colorDict = {
         0: color1,
         1: color2,
