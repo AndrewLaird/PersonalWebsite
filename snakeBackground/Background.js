@@ -125,4 +125,3 @@ function SnakeArt(id) {
 function Rand(num) {
     return Math.floor(Math.random() * num);
 }
-
