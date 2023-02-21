@@ -96,10 +96,9 @@ function SnakeArt(id) {
         var remain = n % m;
         return Math.floor(remain >= 0 ? remain : remain + m);
     };
-    // interval controls how long between renders at minimum
+    // start the animation loop
     var interval = 10;
     var lastRender = 0;
-    // start the animation loop
     function animate(timestamp) {
         if (timestamp < lastRender + interval) {
             // Not enough time has elapsed since the last frame, skip this frame
@@ -110,7 +109,7 @@ function SnakeArt(id) {
 
         for (var i = 0; i < snakes.length; i++) {
             var dir = Rand(4);
-            var distance = 1;
+            var distance = 3;
             while(dir == (previous[i]+2)%4){
                 var dir = Rand(4);
             }
