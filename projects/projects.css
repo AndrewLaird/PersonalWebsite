@@ -113,7 +113,8 @@ h3 {
 
 div.polaroid {
   width:98%;
-  background-color: #f5f1ed;
+  /*background-color: #f5f1ed;*/
+  background-color: #d3bdb0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   margin: 1%;
