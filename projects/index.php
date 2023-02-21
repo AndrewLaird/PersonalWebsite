@@ -182,7 +182,7 @@
       </div>
       <div class="row">
         <div class="keyboard-col-large">
-          <img src="./MargeSimpsonNeat.jpg"  alt="HandWiredKeyboard">
+          <img src="./MargeSimpsonNeat.png"  alt="HandWiredKeyboard">
         </div>
       </div>
     </div>
