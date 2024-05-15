@@ -1,30 +1,30 @@
 var requestId = 0;
+var animation_id
+var c;
 window.onload = function(){
-  requestId = SnakeArt("canvas");
-};
-
-window.onresize = function(){
-  cancelAnimationFrame(requestId);
-  requestId = SnakeArt("canvas");
-}
-
-
-window.onload = function(){
-    interval_id = SnakeArt("canvas");
-};
-window.onresize = function(){
-    clearInterval(interval_id);
-    interval_id = SnakeArt("canvas");
-
-}
-
-function SnakeArt(id) {
-    var canvas = document.getElementById(id);
-    var c = canvas.getContext("2d");
-    canvas.style.webkitFilter = "blur(1px)";
-
+    var canvas = document.getElementById("canvas");
+    
+    c = canvas.getContext("2d");
+    // Update canvas size
     c.canvas.height = window.innerHeight;
     c.canvas.width = window.innerWidth;
+    canvas.style.webkitFilter = "blur(1px)";
+    animation_id = SnakeArt(c.canvas);
+};
+
+window.onresize = function(){
+    // Cancel the current animation frame request
+    cancelAnimationFrame(animation_id);
+
+    // Update canvas size
+    c.canvas.height = window.innerHeight;
+    c.canvas.width = window.innerWidth;
+    
+    // Call SnakeArt to restart the animation loop with the updated canvas size
+    animation_id = SnakeArt(c.canvas);
+}
+
+function SnakeArt(canvas) {
 
     var width = canvas.width;
     var height = canvas.height;
@@ -34,7 +34,7 @@ function SnakeArt(id) {
     // Grey
     c.fillStyle = "#312E2B";
     c.fillRect(0, 0, width, height);
-    
+
     //var color1 = "#d3bdb0";
     //var color2 = "#69385c";
     //var color3 = "#69385c";
@@ -89,7 +89,42 @@ function SnakeArt(id) {
 
         return [delta_x,delta_y]
 
+    }
+    function valid_directions(snake_index){
+        let delta_x, delta_y;
+        let valid_dirs = [];
+        for(let dir = 0; dir < 4; dir++){
+            // remove going directly behind
+            if (dir == (previous[snake_index]+2)%4){
+                continue
+            }
+            // check if the next spot is open
+            [delta_x,delta_y] = move_snake(dir)
+            x = mod((x+delta_x) , (xNum-2));
+            y = mod((y+delta_y) , (yNum-2));
+            if(board[y][x] != 1){
+                valid_dirs.push(dir);
+            }
+        }
+        return valid_dirs
+
     };
+    function get_next_move(snake_index){
+        // if you can not run into a taken square, do so
+        let valid_dirs = valid_directions(snake_index)
+        if(valid_dirs.length){
+            let selection = Rand(valid_dirs.length);
+            console.log(snake_index, valid_dirs, selection)
+            return valid_dirs[selection]
+        }
+        // otherwise just take a random one that isn't the previous one
+        var dir = Rand(4);
+        while(dir == (previous[snake_index]+2)%4){
+            dir = Rand(4);
+        }
+        return dir;
+    }
+;
 
     // javascript mod function returns negative for negative numbers
     function mod(n, m) {
@@ -109,15 +144,11 @@ function SnakeArt(id) {
         lastRender = timestamp;
 
         for (var i = 0; i < snakes.length; i++) {
-            var dir = Rand(4);
-            var distance = 1;
-            while(dir == (previous[i]+2)%4){
-                var dir = Rand(4);
-            }
+            var dir = get_next_move(i);
             // give a bias toward exploration
             previous[i] = dir;
 
-            for(var j = 0; j < distance; j++){
+            for(var j = 0; j < 1; j++){
                 var x = snakes[i][0];
                 var y = snakes[i][1];
 
@@ -143,14 +174,14 @@ function SnakeArt(id) {
 
         }
         // Request the next frame
-        requestAnimationFrame(animate);
+        animation_id = requestAnimationFrame(animate);
     }
 
     // Start the animation loop
     var animation_id = requestAnimationFrame(animate);
 
     return animation_id;
-    }
+}
 
 function Rand(num) {
     return Math.floor(Math.random() * num);
