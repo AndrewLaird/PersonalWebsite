@@ -5,6 +5,8 @@ window.onload = function() {
     var canvasLeft = document.getElementById("canvas-left");
     var canvasRight = document.getElementById("canvas-right");
 
+    if (!canvasLeft || !canvasRight) return;
+
     cLeft = canvasLeft.getContext("2d");
     cRight = canvasRight.getContext("2d");
 
@@ -20,6 +22,8 @@ window.onload = function() {
 };
 
 window.onresize = function() {
+    if (!cLeft || !cRight) return;
+
     cancelAnimationFrame(animationLeft);
     cancelAnimationFrame(animationRight);
 
