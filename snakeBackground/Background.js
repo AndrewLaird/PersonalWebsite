@@ -1,187 +1,253 @@
-var requestId = 0;
-var animation_id
-var c;
-window.onload = function(){
-    var canvas = document.getElementById("canvas");
-    
-    c = canvas.getContext("2d");
-    // Update canvas size
-    c.canvas.height = window.innerHeight;
-    c.canvas.width = window.innerWidth;
-    canvas.style.webkitFilter = "blur(1px)";
-    animation_id = SnakeArt(c.canvas);
+var animationLeft, animationRight;
+var cLeft, cRight;
+
+window.onload = function() {
+    var canvasLeft = document.getElementById("canvas-left");
+    var canvasRight = document.getElementById("canvas-right");
+
+    cLeft = canvasLeft.getContext("2d");
+    cRight = canvasRight.getContext("2d");
+
+    var sideWidth = Math.floor(window.innerWidth * 0.25);
+
+    cLeft.canvas.width = sideWidth;
+    cLeft.canvas.height = window.innerHeight;
+    cRight.canvas.width = sideWidth;
+    cRight.canvas.height = window.innerHeight;
+
+    animationLeft = GameOfLife(cLeft, "right");
+    animationRight = GameOfLife(cRight, "left");
 };
 
-window.onresize = function(){
-    // Cancel the current animation frame request
-    cancelAnimationFrame(animation_id);
+window.onresize = function() {
+    cancelAnimationFrame(animationLeft);
+    cancelAnimationFrame(animationRight);
 
-    // Update canvas size
-    c.canvas.height = window.innerHeight;
-    c.canvas.width = window.innerWidth;
-    
-    // Call SnakeArt to restart the animation loop with the updated canvas size
-    animation_id = SnakeArt(c.canvas);
-}
+    var sideWidth = Math.floor(window.innerWidth * 0.25);
 
-function SnakeArt(canvas) {
+    cLeft.canvas.width = sideWidth;
+    cLeft.canvas.height = window.innerHeight;
+    cRight.canvas.width = sideWidth;
+    cRight.canvas.height = window.innerHeight;
 
-    var width = canvas.width;
-    var height = canvas.height;
+    animationLeft = GameOfLife(cLeft, "right");
+    animationRight = GameOfLife(cRight, "left");
+};
 
-    // Toupe
-    //c.fillStyle = "#f5f1ed";
-    // Grey
-    c.fillStyle = "#312E2B";
-    c.fillRect(0, 0, width, height);
+function GameOfLife(ctx, direction) {
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+    var cellSize = 16;
 
-    //var color1 = "#d3bdb0";
-    //var color2 = "#69385c";
-    //var color3 = "#69385c";
-    //var color4 = "#d3bdb0";
+    var bgColor = "#312E2B";
+    var cellColors = ["#d3bdb0", "#69385c", "#715b64", "#c1ae9f"];
 
-    var color1 = "#d3bdb0";
-    var color2 = "#69385c";
-    var color3 = "#715b64";
-    var color4 = "#c1ae9f";
+    var cols = Math.floor(width / cellSize);
+    var rows = Math.floor(height / cellSize);
 
-    //var color1 = "#d3bdb0";
-    //var color2 = "#69385c";
-    //var color3 = "#715b64";
-    //var color4 = "#FFFFFF";
-
-    var xNum = Math.ceil(width / 10);
-    var yNum = Math.ceil(height / 10);
-
-    // make sure that there is always an even number of pixels
-    xNum = xNum - xNum%2
-    yNum = yNum - yNum%2
-
-    var xBox = width / xNum;
-    var yBox = height / yNum;
-    var board = [];
-    for (y = 0; y < yNum; y++) {
-        board[y] = [];
-        for (x = 0; x < xNum; x++) {
-            board[y][x] = 0;
+    // Initialize empty grid
+    var grid = [];
+    var ageGrid = [];
+    for (var y = 0; y < rows; y++) {
+        grid[y] = [];
+        ageGrid[y] = [];
+        for (var x = 0; x < cols; x++) {
+            grid[y][x] = 0;
+            ageGrid[y][x] = 0;
         }
     }
 
-    c.lineWidth = 1;
-
-    // put them in 4 quadrents
-    var snake1 = [Math.round(xNum*1/8), Math.round(yNum*1/4)];
-    var snake2 = [Math.round(xNum*7/8), Math.round(yNum*1/4)];
-    var snake3 = [Math.round(xNum*1/8), Math.round(yNum*3/4)];
-    var snake4 = [Math.round(xNum*7/8), Math.round(yNum*3/4)];
-    var snakes = [snake1, snake2, snake3, snake4];
-    var previous = [0,0,0,0]
-    colorDict = {
-        0: color1,
-        1: color2,
-        2: color3,
-        3: color4
-    };
-
-    function move_snake(dir){
-        delta_x = (dir % 2) * (-1)*(dir-2)
-        delta_y = ((dir+1) % 2) * (dir-1)
-
-        return [delta_x,delta_y]
-
-    }
-    function valid_directions(snake_index){
-        let delta_x, delta_y;
-        let valid_dirs = [];
-        for(let dir = 0; dir < 4; dir++){
-            // remove going directly behind
-            if (dir == (previous[snake_index]+2)%4){
-                continue
-            }
-            // check if the next spot is open
-            [delta_x,delta_y] = move_snake(dir)
-            x = mod((x+delta_x) , (xNum-2));
-            y = mod((y+delta_y) , (yNum-2));
-            if(board[y][x] != 1){
-                valid_dirs.push(dir);
-            }
-        }
-        return valid_dirs
-
-    };
-    function get_next_move(snake_index){
-        // if you can not run into a taken square, do so
-        let valid_dirs = valid_directions(snake_index)
-        if(valid_dirs.length){
-            let selection = Rand(valid_dirs.length);
-            return valid_dirs[selection]
-        }
-        // otherwise just take a random one that isn't the previous one
-        var dir = Rand(4);
-        while(dir == (previous[snake_index]+2)%4){
-            dir = Rand(4);
-        }
-        return dir;
-    }
-;
-
-    // javascript mod function returns negative for negative numbers
-    function mod(n, m) {
-        var remain = n % m;
-        return Math.floor(remain >= 0 ? remain : remain + m);
-    };
-    // interval controls how long between renders at minimum
-    var interval = 10;
-    var lastRender = 0;
-    // start the animation loop
-    function animate(timestamp) {
-        if (timestamp < lastRender + interval) {
-            // Not enough time has elapsed since the last frame, skip this frame
-            requestAnimationFrame(animate);
-            return;
-        }
-        lastRender = timestamp;
-
-        for (var i = 0; i < snakes.length; i++) {
-            var dir = get_next_move(i);
-            // give a bias toward exploration
-            previous[i] = dir;
-
-            for(var j = 0; j < 1; j++){
-                var x = snakes[i][0];
-                var y = snakes[i][1];
-
-                var delta = move_snake(dir);
-                const delta_x = delta[0];
-                const delta_y = delta[1];
-
-                x = mod((x+delta_x) , (xNum-2));
-                y = mod((y+delta_y) , (yNum-2));
-
-                if (board[y][x] == 0) {
-                    c.fillStyle = colorDict[i]
-                    c.fillRect((x * xBox) + xBox/4
-                        , (y * yBox) + yBox/4
-                        , 3*xBox/4
-                        , 3*yBox/4
-                    );
-                    board[y][x] = 1;
+    // Glider moving down-right
+    function placeGliderRight(startX, startY) {
+        var pattern = [
+            [0, 1, 0],
+            [0, 0, 1],
+            [1, 1, 1]
+        ];
+        for (var dy = 0; dy < 3; dy++) {
+            for (var dx = 0; dx < 3; dx++) {
+                var x = startX + dx;
+                var y = startY + dy;
+                if (x >= 0 && x < cols && y >= 0 && y < rows) {
+                    grid[y][x] = pattern[dy][dx];
+                    ageGrid[y][x] = pattern[dy][dx];
                 }
-                snakes[i][0] = x;
-                snakes[i][1] = y;
             }
-
         }
-        // Request the next frame
-        animation_id = requestAnimationFrame(animate);
     }
 
-    // Start the animation loop
-    var animation_id = requestAnimationFrame(animate);
+    // Glider moving down-left
+    function placeGliderLeft(startX, startY) {
+        var pattern = [
+            [0, 1, 0],
+            [1, 0, 0],
+            [1, 1, 1]
+        ];
+        for (var dy = 0; dy < 3; dy++) {
+            for (var dx = 0; dx < 3; dx++) {
+                var x = startX + dx;
+                var y = startY + dy;
+                if (x >= 0 && x < cols && y >= 0 && y < rows) {
+                    grid[y][x] = pattern[dy][dx];
+                    ageGrid[y][x] = pattern[dy][dx];
+                }
+            }
+        }
+    }
 
-    return animation_id;
-}
+    // Place gliders diagonally from corners
+    var spacing = 8;
+    var xStep = Math.floor(cols / 3);
+    if (direction === "right") {
+        var startX = 0;
+        for (var y = 2; y < rows - 5; y += spacing) {
+            placeGliderRight(startX, y);
+            startX = (startX + xStep) % cols;
+        }
+    } else {
+        var startX = cols - 4;
+        for (var y = 2; y < rows - 5; y += spacing) {
+            placeGliderLeft(startX, y);
+            startX = startX - xStep;
+            if (startX < 0) startX += cols;
+        }
+    }
 
-function Rand(num) {
-    return Math.floor(Math.random() * num);
+    // Track mouse position for highlight
+    var mouseX = -1;
+    var mouseY = -1;
+
+    ctx.canvas.addEventListener("mousemove", function(e) {
+        var rect = ctx.canvas.getBoundingClientRect();
+        mouseX = Math.floor((e.clientX - rect.left) / cellSize);
+        mouseY = Math.floor((e.clientY - rect.top) / cellSize);
+    });
+
+    ctx.canvas.addEventListener("mouseleave", function() {
+        mouseX = -1;
+        mouseY = -1;
+    });
+
+    // Loaf pattern (stable "bread" shape)
+    function placeLoaf(startX, startY) {
+        var pattern = [
+            [0, 1, 1, 0],
+            [1, 0, 0, 1],
+            [0, 1, 0, 1],
+            [0, 0, 1, 0]
+        ];
+        for (var dy = 0; dy < 4; dy++) {
+            for (var dx = 0; dx < 4; dx++) {
+                var x = startX + dx - 1;
+                var y = startY + dy - 1;
+                if (x >= 0 && x < cols && y >= 0 && y < rows && pattern[dy][dx]) {
+                    grid[y][x] = 1;
+                    ageGrid[y][x] = 1;
+                }
+            }
+        }
+    }
+
+    ctx.canvas.addEventListener("click", function(e) {
+        var rect = ctx.canvas.getBoundingClientRect();
+        var clickX = Math.floor((e.clientX - rect.left) / cellSize);
+        var clickY = Math.floor((e.clientY - rect.top) / cellSize);
+        if (clickX >= 0 && clickX < cols && clickY >= 0 && clickY < rows) {
+            placeLoaf(clickX, clickY);
+        }
+    });
+
+    function countNeighbors(grid, x, y) {
+        var count = 0;
+        for (var dy = -1; dy <= 1; dy++) {
+            for (var dx = -1; dx <= 1; dx++) {
+                if (dx === 0 && dy === 0) continue;
+                var ny = (y + dy + rows) % rows;
+                var nx = (x + dx + cols) % cols;
+                count += grid[ny][nx];
+            }
+        }
+        return count;
+    }
+
+    function nextGeneration() {
+        var newGrid = [];
+        var newAgeGrid = [];
+        for (var y = 0; y < rows; y++) {
+            newGrid[y] = [];
+            newAgeGrid[y] = [];
+            for (var x = 0; x < cols; x++) {
+                var neighbors = countNeighbors(grid, x, y);
+                var alive;
+                if (grid[y][x] === 1) {
+                    alive = (neighbors === 2 || neighbors === 3) ? 1 : 0;
+                } else {
+                    alive = (neighbors === 3) ? 1 : 0;
+                }
+                newGrid[y][x] = alive;
+                newAgeGrid[y][x] = alive ? ageGrid[y][x] + 1 : 0;
+            }
+        }
+        grid = newGrid;
+        ageGrid = newAgeGrid;
+    }
+
+    function render() {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, width, height);
+
+        for (var y = 0; y < rows; y++) {
+            for (var x = 0; x < cols; x++) {
+                if (grid[y][x] === 1) {
+                    var age = ageGrid[y][x];
+                    var colorIndex = Math.min(age - 1, cellColors.length - 1);
+                    ctx.fillStyle = cellColors[colorIndex];
+                    ctx.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1);
+                }
+            }
+        }
+
+        // Draw highlight under cursor with pulsing anticipation
+        if (mouseX >= 0 && mouseX < cols && mouseY >= 0 && mouseY < rows) {
+            var pulse = 0.3 + 0.2 * Math.sin(Date.now() / 150);
+
+            // Outer glow - neighboring cells
+            for (var dy = -2; dy <= 2; dy++) {
+                for (var dx = -2; dx <= 2; dx++) {
+                    if (dx === 0 && dy === 0) continue;
+                    var nx = mouseX + dx;
+                    var ny = mouseY + dy;
+                    if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        var alpha = (0.15 / dist) * pulse;
+                        ctx.fillStyle = "rgba(255, 255, 255, " + alpha + ")";
+                        ctx.fillRect(nx * cellSize, ny * cellSize, cellSize - 1, cellSize - 1);
+                    }
+                }
+            }
+
+            // Main highlight
+            ctx.fillStyle = "rgba(255, 255, 255, " + pulse + ")";
+            ctx.fillRect(mouseX * cellSize, mouseY * cellSize, cellSize - 1, cellSize - 1);
+        }
+    }
+
+    var gameInterval = 150;
+    var lastGameUpdate = 0;
+
+    function animate(timestamp) {
+        // Update game state at slower interval
+        if (timestamp - lastGameUpdate >= gameInterval) {
+            nextGeneration();
+            lastGameUpdate = timestamp;
+        }
+
+        // Render every frame for smooth highlight
+        render();
+
+        return requestAnimationFrame(animate);
+    }
+
+    render();
+    return requestAnimationFrame(animate);
 }

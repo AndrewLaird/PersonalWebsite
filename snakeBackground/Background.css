@@ -1,7 +1,30 @@
-#canvas {
+#canvas-left {
   position: fixed;
   top: 0;
   left: 0;
+}
+#canvas-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+#canvas-overlay-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+#canvas-overlay-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 html{
   background-color:#312E2B;

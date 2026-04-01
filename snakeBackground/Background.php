@@ -1,4 +1,6 @@
 <div id="background">
-  <canvas id="canvas" width="100%" height="100%">
-    </canvas>
+  <canvas id="canvas-left"></canvas>
+  <canvas id="canvas-right"></canvas>
+  <div id="canvas-overlay-left"></div>
+  <div id="canvas-overlay-right"></div>
 </div>
