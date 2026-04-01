@@ -44,7 +44,7 @@
         </p>
       </div>
         <div class="caption">
-          <p>Here's the model running on a dificult image with lots of arrows obstructing the pieces</p>
+          <p>Here's the model running on a difficult image with lots of arrows obstructing the pieces</p>
         </div>
       <img src="./ChessDetector.png"  alt="ChessDetector" style="width:100%">
     </div>
@@ -177,7 +177,7 @@
             <li>
               The added fuctionality from the QMK firmware allows me to have layers of functionality such as mouse movement
             </li>
-          </u>
+          </ul>
         </p>
       </div>
       <div class="row">

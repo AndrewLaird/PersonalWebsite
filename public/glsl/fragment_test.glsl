@@ -1,6 +1,7 @@
 //FRAGMENT SHADER
 uniform float time;
 uniform vec2 u_resolution;
+#define M_PI 3.1415926535897932384626433832795
 
 // --- noise from procedural pseudo-Perlin (better but not so nice derivatives) ---------
                     // ( adapted from IQ )
@@ -26,12 +27,11 @@ void main() {
     // set the fragment color based on position
     vec2 uv = ((gl_FragCoord.xy / u_resolution.xy));
     if (uv.x > 0.5) {
-        gl_FragColor = vec4(0.3, 0.5, 0.1, 1.0);
-    }
-    else if (uv.y > 0.5) {
-        gl_FragColor = vec4(0.7, 0.3, 0.8, 1.0);
+        // make sine wave
+        vec3 color = mix(vec3(0.1,0.3,0.0),vec3(0.5,1.0,0.0), mod(uv.y + (time/100.0), 1.0));
+        gl_FragColor = vec4(color, 1.0);
     }
     else{
-        gl_FragColor = vec4(uv.x, uv.y, 0.0, 1.0);
+        gl_FragColor = vec4(uv.x, uv.y, mod((uv.x+uv.y+time/10.0) , 1.0), 1.0);
     }
 }

@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800" rel="stylesheet">
-<link href = <?echo $path. "/reinforecment/reinforcement.css"?> rel="stylesheet">
+<link href = <?echo $path. "/reinforcement/reinforcement.css"?> rel="stylesheet">
 <div class="page">
   <div id="Content">
 
@@ -35,7 +35,7 @@
 
 
     <p>
-      Other research topics include DDQN, Ciriculum Learning, and How to Read Research Papers Effciently.
+      Other research topics include DDQN, Curriculum Learning, and How to Read Research Papers Efficiently.
     </p>
   </div>
 </div>

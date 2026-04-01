@@ -114,7 +114,6 @@ function SnakeArt(canvas) {
         let valid_dirs = valid_directions(snake_index)
         if(valid_dirs.length){
             let selection = Rand(valid_dirs.length);
-            console.log(snake_index, valid_dirs, selection)
             return valid_dirs[selection]
         }
         // otherwise just take a random one that isn't the previous one
