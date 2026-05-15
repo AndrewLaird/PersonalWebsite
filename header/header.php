@@ -1,4 +1,3 @@
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <div class="header">
   <h1 id="Title"> Andrew Laird</h1>
   <h2 id="subheader"> FullStack + AI       </h2>
