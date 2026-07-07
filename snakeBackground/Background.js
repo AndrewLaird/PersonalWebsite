@@ -19,7 +19,7 @@ function CellularAutomaton(canvas) {
     var ctx = canvas.getContext("2d");
     var cellSize = 6;
     var bgColor = "#312E2B";
-    var cellColor = "#d3bdb0";
+    var cellColor = "rgba(211, 189, 176, 0.4)";
 
     // Size canvas to full document
     var pageHeight = Math.max(

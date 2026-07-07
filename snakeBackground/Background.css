@@ -20,7 +20,7 @@ body {
   position: relative;
   margin: 0;
 }
-.header, .page, .centerHeader {
+.header-card, .page, .centerHeader {
   position: relative;
   z-index: 1;
 }

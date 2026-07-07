@@ -1,20 +1,18 @@
-* {
-  font-family: 'Montserrat', sans-serif;
-}
-
 .page {
-  background-color: #d3bdb0;
-  color: #715b64;
   position: relative;
-  max-width:800px;
-  margin: 25px auto;
-  padding: 1%;
-  min-width: 650px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
+  width: min(800px, 92vw);
+  margin: 24px auto 64px;
+  padding: 12px;
+  background-color: var(--surface);
+  border: 1px solid rgba(211, 189, 176, 0.25);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
-embed{
-  width:100%;
-  height:120vh;
+embed {
+  width: 100%;
+  height: 120vh;
+  border-radius: var(--radius-sm);
 }
-

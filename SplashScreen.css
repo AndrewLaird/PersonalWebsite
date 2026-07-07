@@ -1,0 +1,4 @@
+/* Homepage only: float the header card like a hero */
+.header-card {
+  margin-top: max(22vh, 48px);
+}

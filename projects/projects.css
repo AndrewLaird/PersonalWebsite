@@ -1,159 +1,119 @@
-* {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.fullscreen {
-    width: 10px;
-    height: 100%;
-}
-
 .page {
-  background-color: #d3bdb0;
-  color: #715b64;
   position: relative;
-  max-width:800px;
-  margin: 10px auto;
-  padding: 1%;
-  min-width: 650px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
+  width: min(800px, 92vw);
+  margin: 24px auto 64px;
+  padding: 0;
+  background: none;
 }
 
-.nolink{
-  text-decoration:none;
-  color: inherit;
-}
-
-.bolder{
-
-}
-
-iframe{
-  width:99%;
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-nav a {
-  position: relative;
-  display: inline-block;
-  margin: 15px 15px;
-  outline: none;
-  color: #d3bdb0;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-nav a:hover,
-nav a:focus {
-  outline: none;
-}
-
-/* Effect 1: Brackets */
-.cl-effect-1 {
-  background-color: #69385c;
-}
-.cl-effect-1 a::before,
-.cl-effect-1 a::after {
-  display: inline-block;
-  opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-  transition: transform 0.3s, opacity 0.2s;
-}
-
-.cl-effect-1 a::before {
-  margin-right: 10px;
-  content: '[';
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  transform: translateX(20px);
-}
-
-.cl-effect-1 a::after {
-  margin-left: 10px;
-  content: ']';
-  -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
-  transform: translateX(-20px);
-}
-
-.cl-effect-1 a:hover::before,
-.cl-effect-1 a:hover::after,
-.cl-effect-1 a:focus::before,
-.cl-effect-1 a:focus::after {
-  opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  transform: translateX(0px);
-}
-
-h1 {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-}
-
-h2 {
-  font-weight: normal;
-}
-
-h3 {
-  font-weight: normal;
-}
-
-.row{
-  display:flex
-}
-
-.keyboard-col-large{
-  margin-top:auto;
-  margin-left:auto;
-  margin-right:auto;
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 div.polaroid {
-  width:98%;
-  background-color: #f5f1ed;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: relative;
-  margin: 1%;
-  margin-top:10px;
+  background-color: var(--surface);
+  color: var(--ink);
+  border: 1px solid rgba(211, 189, 176, 0.25);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-img {
-  width: 100%;
+div.polaroid:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 div.caption {
-  padding: 10px 20px;
-  font-size: 24px;
-  color: #000000;
-  /*padding-left:40px;
-  padding-right:40px;*/
-  /*color: #899373;
-   */
+  padding: 22px 28px 8px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
 }
-.left{
-	text-align:left;
+
+div.caption:last-of-type {
+  padding-bottom: 12px;
 }
+
+.caption p {
+  font-weight: 400;
+  margin: 0.6em 0;
+}
+
+.caption ul {
+  padding-left: 1.2em;
+}
+
+.caption li {
+  margin: 0.4em 0;
+}
+
+.bolder {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--plum);
+  letter-spacing: 0.01em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(113, 91, 100, 0.2);
+  margin: 14px 0;
+}
+
+.left {
+  text-align: left;
+}
+
 .skill_bubbles {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .skill_bubbles li {
   display: inline-block;
-  margin: 5px;
-  padding: 8px 15px;
+  padding: 5px 14px;
   border-radius: 50px;
-  background-color: #312E2B;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
+  background-color: rgba(105, 56, 92, 0.1);
+  border: 1px solid rgba(105, 56, 92, 0.25);
+  color: var(--plum);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-align: center;
   text-transform: uppercase;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  border: none;
+}
+
+.nolink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.row {
+  display: flex;
+}
+
+.keyboard-col-large {
+  margin: auto auto 0;
 }
