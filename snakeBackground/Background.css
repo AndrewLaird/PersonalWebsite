@@ -14,6 +14,17 @@
   z-index: 0;
   pointer-events: none;
 }
+/* Vignette over the automaton layers: darkened edges read as depth */
+#background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 30%,
+    rgba(49, 46, 43, 0) 55%,
+    rgba(24, 22, 20, 0.55) 100%
+  );
+}
 html {
   background-color: #312E2B;
 }
